@@ -72,7 +72,7 @@ router.delete("/:id",async (req,res)=>{
 //SEARCH ROOMS
 router.get("/search/:place",async (req,res)=>{
     try{
-        console.log(req.params.place)
+       // console.log(req.params.place)
         const rooms=await Room.find({
             "$or":[
                 {"city":{$regex:req.params.place}}

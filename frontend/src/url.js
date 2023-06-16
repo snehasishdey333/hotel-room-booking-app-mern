@@ -1,2 +1,2 @@
-const  URL="https://hotel-room-booking-app-mern.vercel.app"
+const  URL=import.meta.env.VITE_URL
 export default URL

@@ -1,0 +1,10 @@
+.boxCSS{
+    padding: 8px;
+    border-radius: 16px;
+}
+.imgCSS{
+    border-radius: 16px;
+    cursor: pointer;
+    z-index: 1;
+}
+

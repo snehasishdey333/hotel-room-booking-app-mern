@@ -1,0 +1,17 @@
+.listHotelImg{
+    object-fit: cover;
+    height: 300px;
+    width: 400px;
+    margin-right: 16px;
+}
+.card{
+    border: 1px solid rgb(177, 177, 177);;
+}
+.ratingBtn{
+    background-color: #003580;
+    color: white;
+    padding: 5px;
+    font-size: 14px;
+    border-radius: 4px;
+    margin-right: 8px;
+}

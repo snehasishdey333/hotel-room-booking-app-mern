@@ -1,0 +1,62 @@
+.hotelImgDiv{
+    width: 100%;
+}
+.hotelShowImg{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+p{
+    color:white;
+    font-size: 26px;
+}
+.setIcons{
+    position: relative;
+}
+.dateBox{
+    z-index: 10;
+}
+.personBox{
+    z-index: 2;
+}
+.box1{
+    position: relative;
+}
+.personNumberBtn{
+    padding: 8px 16px;
+    margin-left: 8px;
+    color: white;
+    font-size: 16px;
+    background-color: #003580;
+}
+h3{
+    color: white;
+}
+.box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 4px 10px;
+    cursor: pointer;
+}
+
+.searchContainers{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.icon{
+    color: gray;
+    margin-right: 16px;
+    cursor: pointer;
+}
+.btn{
+    border:3px solid #0071c2;
+    background-color: white;
+    padding: 2px 4px;
+}
+.btn:disabled{
+    cursor: not-allowed;
+}

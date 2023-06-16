@@ -1,0 +1,33 @@
+.hotelImg{
+    height: 300px;
+    object-fit: cover;
+    cursor: pointer;
+    border-radius: 8px;
+ }
+ .ratingBtn{
+     background-color: #003580;
+     color: white;
+     padding: 5px;
+     font-size: 14px;
+     border-radius: 4px;
+     margin-right: 8px;
+ }
+ .hotelPrice{
+     font-weight: bold;
+     font-size: 16px;
+     color: black;
+     margin-bottom: 8px;
+     cursor: pointer;
+ }
+ .hotelLocation{
+     color: rgb(109, 109, 109);
+     cursor: pointer;
+ }
+ .hotelName{
+     font-size: 22px;
+     font-weight: bold;
+     cursor: pointer;
+ }
+ .hotel{
+     padding: 8px;
+ }

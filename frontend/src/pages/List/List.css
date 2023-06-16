@@ -1,0 +1,22 @@
+.left{
+    flex:1;
+    background-color: #febb02;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    height: max-content;
+    
+}
+
+.right{
+    flex:3;
+}
+.calLabel{
+   position: relative;
+   
+}
+.cal{
+    position: absolute;
+    top:220px;
+}

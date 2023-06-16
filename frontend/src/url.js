@@ -1,2 +1,2 @@
-const  URL="http://localhost:5000"
+const  URL="https://hotel-room-booking-app-mern.vercel.app"
 export default URL

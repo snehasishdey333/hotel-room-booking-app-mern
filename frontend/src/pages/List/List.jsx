@@ -51,8 +51,10 @@ const List = () => {
 
   const handleSearch=async()=>{
 
-    console.log(destination)
+    //console.log(destination)
+    
       navigate("/room/search/"+destination,{state:{destination,date,person}})
+      fetchRooms()
       
   }
 

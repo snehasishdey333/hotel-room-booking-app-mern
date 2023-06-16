@@ -9,7 +9,7 @@ import URL from '../../url'
 
 const FeaturedProperties = () => {
 
-  
+  console.log(URL)
   
   const {user}=useContext(UserContext)
   

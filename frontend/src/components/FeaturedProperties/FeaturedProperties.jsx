@@ -19,7 +19,7 @@ const FeaturedProperties = () => {
   
   const fetchRooms=async()=>{
     try{
-        const res=await axios.get('/api/rooms/all/')
+        const res=await axios.get(URL+'/api/rooms/all/')
         console.log(res.data)
         setRooms(res.data)
     }

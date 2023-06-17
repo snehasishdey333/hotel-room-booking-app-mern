@@ -103,7 +103,7 @@ const fetchBookings=()=>{
       )):<h3 className="mt-4 text-xl italic font-bold text-black">You have not booked any rooms yet.</h3>}
                 </div>
             </div>
-            <div className="mx-auto md:mx-0 w-full flex flex-col bg-[#003580] px-4 py-8 md:w-[30%] h-[50vh] items-center justify-center rounded-lg">
+            <div className="mx-auto md:mx-0 w-full flex flex-col bg-[#003580] px-4 py-8 md:w-[30%] h-[65vh] items-center justify-center rounded-lg">
             <div className="flex flex-col w-full">
             <h1 className="mb-8 text-2xl font-bold text-white">Profile Details</h1>
             <div className="flex flex-col items-start w-full space-y-2">

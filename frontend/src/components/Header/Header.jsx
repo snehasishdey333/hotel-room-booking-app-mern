@@ -72,7 +72,7 @@ const Header = () => {
 </div>
 
 {/* search */}
-<div className=" md:w-[73%] w-[90%] absolute bottom-[-25px]  h-[30px] bg-white rounded-lg border-4 border-[#febb02] py-5 flex justify-around items-center">
+<div className=" md:w-[73%] w-[90%] absolute bottom-[-25px]  h-[30px] bg-white rounded-lg border-4 border-[#febb02] py-5 flex justify-around items-center px-2">
        <div className='searchContainers'>
         <p className='hidden icon md:inline'><MdOutlineLocalHotel/></p>
         <input onChange={(e)=>setSearch(e.target.value)} className='text-sm outline-0' placeholder='Where are you going?' type="text" />

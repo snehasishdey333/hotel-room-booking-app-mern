@@ -9,7 +9,7 @@ import URL from '../../url'
 
 const FeaturedProperties = () => {
 
-  console.log(URL)
+  //console.log(URL)
   
   const {user}=useContext(UserContext)
   
@@ -20,7 +20,7 @@ const FeaturedProperties = () => {
   const fetchRooms=async()=>{
     try{
         const res=await axios.get(URL+'/api/rooms/all/')
-        console.log(res.data)
+       // console.log(res.data)
         setRooms(res.data)
     }
     catch(err){

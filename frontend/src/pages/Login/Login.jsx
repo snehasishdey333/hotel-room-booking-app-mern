@@ -19,7 +19,7 @@ const handleLogin=async (e)=>{
    setError(false)
    try{
     const res=await axios.post(URL+"/api/auth/login",{email,password})
-    // console.log(res.data)
+    console.log(res.data)
     setUser(res.data)
     navigate('/')
 

@@ -6,6 +6,7 @@ import { useState,useEffect } from "react"
 import { useParams,useNavigate } from "react-router-dom"
 import axios from "axios"
 import URL from '../../url'
+import Loader from "../../components/Loader/Loader"
 
 
 const Account = () => {
@@ -17,13 +18,14 @@ const Account = () => {
     const [password,setPassword]=useState("")
     const [error,setError]=useState("")
     const [bookings,setBookings]=useState([])
+    const [loader,setLoader]=useState(false)
    
     const userId=useParams()
     // console.log(userId.id)
     // console.log(name)
     // console.log(phone)
     const fetchUserData=async ()=>{
-        
+        setLoader(true)
       axios.get(URL+'/api/users/'+userId.id)
       .then((res)=>{
           setUserIdx(res.data._id)
@@ -31,10 +33,12 @@ const Account = () => {
           setEmail(res.data.email)
           setPhone(res.data.phone)
           setPassword(res.data.password)
+          setLoader(false)
 
       })
       .catch(err=>{
           console.log(err)
+          setLoader(true)
       })
   }
 
@@ -63,18 +67,20 @@ const Account = () => {
 
 const fetchBookings=()=>{
     
-
+setLoader(true)
   axios.get(URL+"/api/bookings/all/"+userIdx)
     .then((res)=>{
         
        // console.log(res.data)
       //  console.log(res.data[0].userId)
         setBookings(res.data)
-        console.log(bookings)
+        // console.log(bookings)
+        setLoader(false)
        
     })
     .catch(err=>{
         console.log(err)
+        setLoader(true)
     })
 
    
@@ -100,7 +106,9 @@ const fetchBookings=()=>{
         
         </>
         
-      )):<h3 className="mt-4 text-xl italic font-bold text-black">You have not booked any rooms yet.</h3>}
+      )):<div className='flex items-center justify-center w-full h-[40vh]'>
+        <Loader/>
+      </div>}
                 </div>
             </div>
             <div className="mx-auto md:mx-0 w-full flex flex-col bg-[#003580] px-4 py-8 md:w-[30%] h-[65vh] items-center justify-center rounded-lg">
@@ -129,6 +137,7 @@ const fetchBookings=()=>{
 
             
             </div>
+            
             <div className="flex items-center justify-center mt-8 space-x-2">
               <button onClick={handleUpdate} className="px-4 py-4 font-bold text-white bg-green-600 border border-white rounded-lg border-1 hover:bg-green-900 hover:text-gray-100">Update Profile</button>
               <button className="px-4 py-4 font-bold text-white bg-red-600 border border-white rounded-lg border-1 hover:bg-red-900 hover:text-gray-100">Delete Account</button>

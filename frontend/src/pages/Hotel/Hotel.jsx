@@ -19,6 +19,7 @@ import { useLocation } from 'react-router-dom'
 import { useContext } from 'react'
 import { UserContext } from '../../Context/UserContext'
 import URL from '../../url'
+import Loader from '../../components/Loader/Loader'
 
 const Hotel = () => {
   //to start from upward
@@ -41,6 +42,7 @@ const Hotel = () => {
     const [perks,setPerks]=useState([])
     const [extraInfo,setExtraInfo]=useState('')
     const [isBooked,setIsBooked]=useState(false)
+    const [loader,setLoader]=useState(false)
     
 
 
@@ -86,6 +88,7 @@ const Hotel = () => {
 // console.log(format(date[0].startDate,"MM/dd/yyyy"))
 
 const fetchRoomData=async()=>{
+  setLoader(true)
   try{
       const res=await axios.get(URL+'/api/rooms/'+roomId.id)
       setName(res.data.name)
@@ -96,10 +99,12 @@ const fetchRoomData=async()=>{
       setDesc(res.data.desc)
       setPerks(res.data.perks)
       setExtraInfo(res.data.extraInfo)
+      setLoader(false)
       // console.log(res.data)
   }
   catch(err){
       console.log(err)
+      setLoader(true)
   }
   
 }
@@ -172,14 +177,17 @@ const handleBooking=()=>{
         <p className='text-[#0071c2] my-2 text-xl font-semibold'>{extraInfo}</p>
         
         <p className='py-4 my-2 text-xl font-semibold text-green-600'>Book a stay over ${price} at this property and get a free airport taxi</p>
-        <div className='grid grid-cols-3 gap-2'>
+        {loader?<div className='flex items-center justify-center w-full h-[40vh]'>
+        <Loader/>
+      </div>
+      :<div className='grid grid-cols-3 gap-2'>
           <div className='hotelImgDiv'><img className='hotelShowImg' src={photos[0]} alt=""/></div>
           <div className='hotelImgDiv'><img className='hotelShowImg' src={photos[1]} alt=""/></div>
           <div className='hotelImgDiv'><img className='hotelShowImg' src={photos[2]} alt=""/></div>
           <div className='hotelImgDiv'><img className='hotelShowImg' src={photos[3]} alt=""/></div>
           <div className='hotelImgDiv'><img className='hotelShowImg' src={photos[4]} alt=""/></div>
           <div className='hotelImgDiv'><img className='hotelShowImg' src={photos[5]} alt=""/></div>
-        </div>
+        </div>}
         <div className='flex flex-col w-full pt-8 mx-auto md:space-x-8 md:flex-row md:mx-0'>
           <div className='w-full md:w-[70%]'>
             <h1 className='mx-auto text-2xl font-bold text-center md:mx-0 md:text-left'>Stay in the heart of {city}</h1>
@@ -187,7 +195,7 @@ const handleBooking=()=>{
             <h3 className="mt-4 text-xl font-bold text-black">Perks</h3>
             <ul className="flex space-x-4">
               {perks.map((p)=>(
-                <li className="bg-[#0071c2] text-white font-bold px-2 py-2 mt-2 rounded-xl">{p}</li>
+                <li key={p._id} className="bg-[#0071c2] text-white font-bold px-2 py-2 mt-2 rounded-xl">{p}</li>
               ))}
             </ul>
           </div>

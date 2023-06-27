@@ -6,6 +6,7 @@ import axios from 'axios'
 import { useNavigate,Link } from 'react-router-dom'
 import { UserContext } from '../../Context/UserContext'
 import URL from '../../url'
+import Loader from '../Loader/Loader'
 
 const FeaturedProperties = () => {
 
@@ -14,17 +15,21 @@ const FeaturedProperties = () => {
   const {user}=useContext(UserContext)
   
   const [rooms,setRooms]=useState([])
+  const [loader,setLoader]=useState(false)
   //user data
   
   
   const fetchRooms=async()=>{
+    setLoader(true)
     try{
         const res=await axios.get(URL+'/api/rooms/all/')
        // console.log(res.data)
         setRooms(res.data)
+        setLoader(false)
     }
     catch(err){
         console.log(err)
+        setLoader(true)
     }
 }
 
@@ -69,7 +74,10 @@ const FeaturedProperties = () => {
            )
             
            )} */}
-      {rooms.map((room)=>(
+      {loader?<div className='flex items-center justify-center w-full h-[40vh]'>
+        <Loader/>
+      </div>
+      :rooms.map((room)=>(
         <>
         <Link to={user?`rooms/${room._id}`:"/login"}>
         <FeaturedRoom key={room._id} room={room} />

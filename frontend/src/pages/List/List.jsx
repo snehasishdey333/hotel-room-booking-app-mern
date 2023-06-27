@@ -1,4 +1,4 @@
-import React from 'react'
+
 import './List.css'
 import Navbar from '../../components/Navbar/Navbar'
 import { useLocation } from 'react-router-dom'
@@ -13,6 +13,7 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import URL from '../../url'
+import Loader from '../../components/Loader/Loader'
 
 const List = () => {
 
@@ -27,6 +28,7 @@ const List = () => {
   const [person, setPerson] = useState(location.state.person)
   const [calendar, setCalendar] = useState(false)
   const [searchData,setSearchData]=useState([])
+  const [loader,setLoader]=useState(false)
   // console.log(person)
   
 
@@ -36,14 +38,17 @@ const List = () => {
    },[])
 
    const fetchRooms=async()=>{
+    setLoader(true)
     try{
       const res=await axios.get(URL+'/api/rooms/search/'+param.place)
-      console.log(res.data)
+      // console.log(res.data)
       setSearchData(res.data)
-      console.log(searchData)
+      // console.log(searchData)
+      setLoader(false)
     }
     catch(err){
       console.log(err)
+      setLoader(true)
     }
    }
 
@@ -157,7 +162,10 @@ const List = () => {
           
           )} */}
 
-          {searchData.map((room)=>(
+          {loader?<div className='flex items-center justify-center w-full h-[40vh]'>
+        <Loader/>
+      </div>
+      :searchData.map((room)=>(
         
         <SearchItem key={room._id} room={room}/>
         
